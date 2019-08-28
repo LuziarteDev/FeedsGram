@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       FeedsGram
  * Plugin URI:        www.luziarte.dev
- * Description:       Simples plugin para exibir feeds do Instagram
+ * Description:       Simples e leve plugin para exibir feeds do Instagram
  * Version:           1.0.0
  * Author:            José Luziarte
  * Author URI:        www.luziarte.dev

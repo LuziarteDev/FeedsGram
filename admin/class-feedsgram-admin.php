@@ -115,9 +115,52 @@ class Feedsgram_Admin {
 		$position = 30;
 	
 		add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);
+
 	}
 
-	public function feedsgram_settings_page() {
-		include_once( plugin_dir_path(__FILE__) . '/partials/feedsgram-admin-display.php' );
+	public function feedsgram_settings_page(){
+		require_once plugin_dir_path( __FILE__ ) . 'partials/fg-option-render.php';
 	}
+
+	/**
+	 * Void
+	 */
+	public function feedsgram_register_settings() {
+		
+		register_setting( 'fg_settings_group', 'fg_url_profile' );
+
+		add_settings_section(
+			'fg_settings',
+			'Home Settings',
+			array( $this, 'fg_settings_section' ),
+			'fg_settings_group'
+		);
+		
+		add_settings_field(
+			'fg_url_profile',
+			'Url do perfil',
+			array( $this, 'fg_url_profile_callback' ),
+			'fg_settings_group',
+			'fg_settings'
+		);
+
+		
+	}
+
+	public function fg_settings_section( $args ) {
+		echo apply_filters( 'the_title', $args['title'] . '' );
+	}
+
+	public function fg_url_profile_callback( $args ) {
+
+		$this->fg_options_field_text_render( 'fg_url_profile', 'fg-feedsgram', 'Target', '_blank' );
+
+	}
+
+	public function fg_options_field_text_render( $option, $class_prefix, $field_name = '', $default = '', $field_type = 'text' ) {
+		$value = get_option( $option, false );
+		$value = ! $value ? $default : $value;
+		require plugin_dir_path( __FILE__ ) . 'partials/text-field.php';
+	}
+
 }

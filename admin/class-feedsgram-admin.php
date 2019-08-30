@@ -118,49 +118,90 @@ class Feedsgram_Admin {
 
 	}
 
+	/**
+	 * Render a form of feedsgram
+	 */
 	public function feedsgram_settings_page(){
 		require_once plugin_dir_path( __FILE__ ) . 'partials/fg-option-render.php';
 	}
 
 	/**
-	 * Void
+	 * Register two fields and settings secion and field.
 	 */
 	public function feedsgram_register_settings() {
 		
 		register_setting( 'fg_settings_group', 'fg_url_profile' );
+		register_setting( 'fg_settings_group', 'fg_post_number' );
 
 		add_settings_section(
 			'fg_settings',
-			'Home Settings',
+			'',
 			array( $this, 'fg_settings_section' ),
 			'fg_settings_group'
 		);
 		
 		add_settings_field(
 			'fg_url_profile',
-			'Url do perfil',
+			'',
 			array( $this, 'fg_url_profile_callback' ),
 			'fg_settings_group',
 			'fg_settings'
 		);
 
+		add_settings_field(
+			'fg_post_number',
+			'',
+			array( $this, 'fg_post_number_callback' ),
+			'fg_settings_group',
+			'fg_settings'
+		);
 		
 	}
 
+	/**
+	 * Callback Function of section
+	 */
 	public function fg_settings_section( $args ) {
 		echo apply_filters( 'the_title', $args['title'] . '' );
 	}
 
+	/**
+	 * Callback function of url profile instagram
+	 */
 	public function fg_url_profile_callback( $args ) {
 
-		$this->fg_options_field_text_render( 'fg_url_profile', 'fg-feedsgram', 'Target', '_blank' );
+		$this->fg_options_field_text_render( 'fg_url_profile', 'fg-feedsgram', 'Url do perfil', 'url do perfil' );
 
 	}
 
+	/**
+	 * Callback function of post number instagram
+	 */
+	public function fg_post_number_callback( $args ) {
+
+		$this->fg_options_field_text_render( 'fg_post_number', 'fg-feedsgram', 'Numero de posts', '1' );
+
+	}
+
+	/**
+	 * Callback function of text field template
+	 */
 	public function fg_options_field_text_render( $option, $class_prefix, $field_name = '', $default = '', $field_type = 'text' ) {
 		$value = get_option( $option, false );
 		$value = ! $value ? $default : $value;
 		require plugin_dir_path( __FILE__ ) . 'partials/text-field.php';
 	}
 
+	public static function foobar_func(){
+		return "foo and bar";
+	}
+
 }
+
+$plugin_name = new Feedsgram();
+$plugin_name = $plugin_name->get_plugin_name();
+
+add_shortcode ('baztag', array ($plugin_name, 'foobar_func'));
+
+
+

@@ -4,27 +4,40 @@ if ( ! current_user_can( 'manage_options' ) ) {
 	return;
 }
 // add error/update messages.
-// check if the user have submitted the settings.
-// WordPress will add the "settings-updated" $_GET parameter to the url.
 if ( ! empty( filter_input( INPUT_GET, 'settings-updated' ) ) ) {
-	// add settings saved message with the class of "updated".
-	add_settings_error( 'tve_messages', 'tve_message', 'Settings Saved', 'updated' );
+	add_settings_error( 'fg_settings_group', 'tve_message', 'Configuração salva', 'Atualizado' );
 }
 // show error/update messages.
-settings_errors( 'tve_messages' );
+settings_errors( 'fg_settings_group' );
 ?>
-<div class="wrap">
-	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-	<form action="options.php" method="post">
-		<?php
-		// output security fields for the registered setting "tve".
-		settings_fields( 'fg_settings_group' );
-		// output setting sections and their fields.
-		// (sections are registered for "tve", each field is registered to a specific section).
-		do_settings_sections( 'fg_settings_group' );
-		// output save settings button.
-        
-        submit_button( 'Save Settings' );
-		?>
+<div class="fg-main">
+	<h1 class="fg-title-feedsgram">FeedsGram</h1>
+	<div class="fg-welcome">
+		<p>Bem vindo ao FeedsGram, plugin responsável por renderizar posts do Instagram sem necessidade do token, permitindo seu site carregar fotos dos posts de perfis públicos do Instagram</p>
+		<p>Para mostrar posts do Instagram utilize o shortcode:</p>
+		<p><span>[feedsgram_posts]</span></p>
+	</div>
+	<form class="fg-form-post" action="options.php" method="post">
+		<div class="fg-blocks">
+			<div class="fg-block">
+                <h4>Configurações: </h3>
+                
+                <?php
+                    settings_fields( 'fg_settings_group' );
+                    do_settings_sections( 'fg_settings_group' );
+                ?>
+
+			</div>
+			<div class="fg-block">
+				<h4>Layout Desejado( <i>Em breve</i> ):</h3>
+				<label>Escolha o layout desejado</label>
+				<select type="text" name="fg_layout" value="Layout" disabled>
+					<option value="Layout">Selecione layout desejado</option>
+					<p><i>Pré-visualização:</i></p>
+				</select>
+			</div>
+		</div>
+        <?php submit_button( 'Salvar' ); ?>
 	</form>
+
 </div>

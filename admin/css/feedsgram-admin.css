@@ -58,8 +58,12 @@
 
 .fg-blocks input,
 .fg-blocks select{
+    height: 30px;
     width: 75%;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+}
+#wpbody-content > div.fg-main > form > div > div:nth-child(1) > table > tbody > tr > td > div{
+    margin-bottom: 7px;
 }
 
 .fg-blocks h4{
@@ -84,4 +88,77 @@
 .fg-form-post button:hover {
     transition-duration: 300ms;
     background-color: #255f96;
+}
+
+/* Part of inputs wordpress */
+.fg-block .form-table th{
+    display: none;
+}
+
+.fg-main #submit {
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    font-size: 16px;
+    right: 30px;
+    position: relative;
+    border-radius: 4px;
+    padding: 8px 26px 32px 25px;
+    color: #fff;
+    left: 85%;
+    transition-duration: 300ms;
+    cursor: pointer;
+    box-shadow: 0 1px 0 #3897f0;
+    text-shadow: 0 -1px 1px #3897f0, 1px 0 1px #3897f0, 0 1px 1px #3897f0, -1px 0 1px #3897f0;
+}
+
+.fg-main #submit:hover {
+    transition-duration: 300ms;
+    background-color: #255f96;
+}
+
+#wpbody-content > div.fg-main > form > div > div:nth-child(2) > label{
+    margin-top: 27px;
+}
+
+@media (max-width: 785px) {
+
+    .fg-main #submit {
+        padding: 8px 26px 8px 25px;
+    }
+    .fg-title-feedsgram{
+        font-size: 67px;
+        margin: 0 auto;
+        margin-bottom: 53px;
+    }
+    
+}
+
+@media (max-width: 700px) {
+    .fg-blocks{
+        flex-direction: column;
+        margin-left: 5%;
+    }
+    .fg-blocks > div{
+        width: 95%;
+    }
+}
+
+@media (max-width: 600px) {
+    .fg-main #submit {
+        left: 79%;
+    }
+}
+
+@media (max-width: 478px){
+    .fg-main #submit {
+        left: 73%;
+    }
+}
+
+@media (max-width: 430px){
+    .fg-main #submit {
+        left: 0;
+        width: 93%;
+        margin: 13px 0px 0px 16px;
+    }
 }

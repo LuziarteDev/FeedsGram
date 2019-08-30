@@ -31,6 +31,11 @@ class Feedsgram_Deactivator {
 	 */
 	public static function deactivate() {
 
+		unregister_setting( 'fg_settings_group', 'fg_url_profile' );
+		unregister_setting( 'fg_settings_group', 'fg_post_number' );
+		delete_option( 'fg_post_number' );
+		delete_option( 'fg_url_profile' );
+
 	}
 
 }

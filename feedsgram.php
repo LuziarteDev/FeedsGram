@@ -16,7 +16,7 @@
  * Plugin Name:       FeedsGram
  * Plugin URI:        www.luziarte.dev
  * Description:       Simples e leve plugin para exibir feeds do Instagram
- * Version:           1.0.0
+ * Version:           1.1.3
  * Author:            José Luziarte
  * Author URI:        www.luziarte.dev
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'FEEDSGRAM_VERSION', '1.0.0' );
+define( 'FEEDSGRAM_VERSION', '1.1.3' );
 
 /**
  * The code that runs during plugin activation.

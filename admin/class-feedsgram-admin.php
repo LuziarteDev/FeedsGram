@@ -178,7 +178,7 @@ class Feedsgram_Admin {
 	 */
 	public function fg_post_number_callback( $args ) {
 
-		$this->fg_options_field_text_render( 'fg_post_number', 'fg-feedsgram', 'Numero de posts', '1' );
+		$this->fg_options_field_text_render( 'fg_post_number', 'fg-feedsgram', 'Numero de posts (máximo 12)', '1' );
 
 	}
 

@@ -32,8 +32,9 @@ class Feedsgram_Shortcode extends Feedsgram_Admin
      * @return HTML with all posts of instagram
      */
     public function fg_sc_feedsgram_posts() {
-        $profile = get_option( 'fg_url_profile' );
-		$post_number = get_option( 'fg_post_number' );
+        
+        $profile     = !empty( get_option( 'fg_url_profile' ) ) ? get_option( 'fg_url_profile' ) : 'wordpressdotcom' ;
+        $post_number = !empty( get_option( 'fg_post_number' ) ) ? get_option( 'fg_post_number' ) : 3 ;
 
         //Get the instance of posts
         $posts = new Instagram_Post( $profile );
@@ -42,6 +43,7 @@ class Feedsgram_Shortcode extends Feedsgram_Admin
         $feeds = $posts->get_feeds( $post_number );
         ?>
             <div class="fg-grid-insta">
+
             <?php foreach( $feeds as $value): ?>
                 <div class="fg-insta-item">
                     <a href="<?php echo $value['url']; ?>" target="_blank">

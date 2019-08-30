@@ -8,7 +8,7 @@ class Instagram_Post
     protected $profile;
     
     function __construct( $url ) {
-        $this->profile = $this->parse_url( $url );
+        $this->profile = $this->parse_url( $url = 'wordpressdotcom' );
     }
 
     //This function parse and retrieve the url or profile

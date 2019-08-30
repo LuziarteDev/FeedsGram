@@ -5,7 +5,7 @@ if ( ! current_user_can( 'manage_options' ) ) {
 }
 // add error/update messages.
 if ( ! empty( filter_input( INPUT_GET, 'settings-updated' ) ) ) {
-	add_settings_error( 'fg_settings_group', 'tve_message', 'Configuração salva', 'Atualizado' );
+	add_settings_error( 'fg_settings_group', 'tve_message', 'Salvo com sucesso', 'Atualizado' );
 }
 // show error/update messages.
 settings_errors( 'fg_settings_group' );

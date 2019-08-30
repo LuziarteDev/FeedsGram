@@ -2,3 +2,26 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+ .fg-grid-insta{
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-gap: 10px;
+    overflow: hidden;
+}
+
+.fg-grid-insta .fg-insta-item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    transition: all .3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.fg-grid-insta .fg-insta-item:hover img {
+    transition-duration: 500ms;
+    transform: scale(1.2);
+}

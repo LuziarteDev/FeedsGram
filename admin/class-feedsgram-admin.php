@@ -103,7 +103,6 @@ class Feedsgram_Admin {
 	/**
 	 * This function register a option page in admin menu
 	 */
-	
 	public function feedsgram_admin_menu() {
 	
 		$page_title = 'FeedsGram';
@@ -192,16 +191,4 @@ class Feedsgram_Admin {
 		require plugin_dir_path( __FILE__ ) . 'partials/text-field.php';
 	}
 
-	public static function foobar_func(){
-		return "foo and bar";
-	}
-
 }
-
-$plugin_name = new Feedsgram();
-$plugin_name = $plugin_name->get_plugin_name();
-
-add_shortcode ('baztag', array ($plugin_name, 'foobar_func'));
-
-
-

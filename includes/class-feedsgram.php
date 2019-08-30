@@ -117,6 +117,12 @@ class Feedsgram {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-feedsgram-admin.php';
 
 		/**
+		 * The class responsible for defining shortcodes methods
+		 * side of the site.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-feedsgram-shortcodes.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -152,12 +158,12 @@ class Feedsgram {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Feedsgram_Admin( $this->get_plugin_name(), $this->get_version() );
-
+		$plugin_admin = new Feedsgram_Shortcode( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'feedsgram_admin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'feedsgram_register_settings' );
+		$this->loader->add_action( 'init', $plugin_admin, 'fg_register_shortcodes');
 
 	}
 
